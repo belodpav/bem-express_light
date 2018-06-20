@@ -1,4 +1,4 @@
-blocks.declare('body', function(data) {
+blocks.declare('body', (data) => {
 
   return {
     block: 'body',

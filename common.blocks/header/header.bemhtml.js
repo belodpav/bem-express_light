@@ -1,7 +1,5 @@
 block('header')({
-    content: () => [
-        {
-            block: 'logo'
-        }
-    ]
+    content: {
+        block: 'logo'
+    }
 });
