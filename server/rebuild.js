@@ -53,7 +53,7 @@ process.env.NO_AUTOMAKE || watch([
 // livereload
 process.env.NO_LIVERELOAD || watch([
     path.join(rootDir, 'static', '*.min.*'),
-    path.join(bundlesDir, '*', '*.priv.js'),
+    path.join(bundlesDir, '*', '*.bempriv.js'),
 ].concat(bundles.map(function(bundle) {
     return path.join(bundlesDir, bundle, bundle + '.bemhtml.js');
 })), watchOpts).on('all', function(event, file) {
