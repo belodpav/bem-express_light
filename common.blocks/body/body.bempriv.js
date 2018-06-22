@@ -19,6 +19,6 @@ BEMPRIV.decl('body', {
     ]);
   },
   _getText: function() {
-    return 'hey hey';
+    return 'Yandex';
   }
 });

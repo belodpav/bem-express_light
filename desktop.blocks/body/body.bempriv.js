@@ -14,7 +14,7 @@ BEMPRIV.decl('body', {
           size: 'm',
           view: 'action'
         },
-        text: this._getText()
+        text: 'hey ' + this._getText()
       }
     ]);
   }
