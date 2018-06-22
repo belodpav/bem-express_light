@@ -7,7 +7,12 @@ const pathToBundle = path.resolve(__dirname, '..', 'desktop.bundles', bundleName
 
 const isDev = process.env.NODE_ENV === 'development';
 
+// const BEMPRIV = require('../node_modules/bem-priv/build/lib/bempriv.js');
+
+// console.log(BEMPRIV);
+
 let templates = getTemplates();
+
 
 function render(req, res, data, context) {
     const query = req.query;
@@ -26,7 +31,8 @@ function render(req, res, data, context) {
     let bemjson;
 
     try {
-        bemjson = templates.priv.get('page')(dataCtx);
+        // console.log(templates.priv);
+        bemjson = templates.priv.json('page', dataCtx);
     } catch(err) {
         console.error('PRIV error', err.stack);
         console.trace('server stack');
@@ -55,8 +61,9 @@ function evalFile(filename) {
 }
 
 function getTemplates() {
+    // console.log(evalFile(path.join(pathToBundle, bundleName + '.priv.js')));
     return {
-        priv: evalFile(path.join(pathToBundle, bundleName + '.priv.js')),
+        priv: evalFile(path.join(pathToBundle, bundleName + '.bempriv.js')),
         BEMHTML: evalFile(path.join(pathToBundle, bundleName + '.bemhtml.js')).BEMHTML
     };
 }
