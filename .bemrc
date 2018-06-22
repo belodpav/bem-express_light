@@ -12,8 +12,9 @@ module.exports = {
                 create: {
                     templates: {
                         'bemdecl.js': '.bem/templates/bemdecl.js',
+                        'bemhtml.js': '.bem/templates/bemhtml.js'
                     },
-                    techs: ['css', 'js'],
+                    techs: ['css', 'js', 'deps.js', 'bempriv.js'],
                     levels: {
                         'desktop.bundles': {
                             techs: [
