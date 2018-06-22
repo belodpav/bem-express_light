@@ -61,7 +61,6 @@ function evalFile(filename) {
 }
 
 function getTemplates() {
-    // console.log(evalFile(path.join(pathToBundle, bundleName + '.priv.js')));
     return {
         priv: evalFile(path.join(pathToBundle, bundleName + '.bempriv.js')),
         BEMHTML: evalFile(path.join(pathToBundle, bundleName + '.bemhtml.js')).BEMHTML
