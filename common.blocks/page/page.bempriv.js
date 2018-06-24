@@ -1,6 +1,12 @@
-BEMPRIV.decl('page', {
+var BEMPRIV = require('bem-priv/build/lib/bempriv.js');
+
+module.exports = BEMPRIV.decl('page', {
   init: function() {
     const {data} = this.data;
+    require('../body/body.bempriv');
+    require('../../desktop.blocks/body/body.bempriv');
+    require('../../common.blocks/footer/footer.bempriv');
+
 
     return {
       block: 'page',
@@ -17,6 +23,7 @@ BEMPRIV.decl('page', {
             content: `
             html {
                 font-size: 10px;
+                font-family: Arial, Helvetica, sans-serif;
             }
             @media (min-width: 1200px) {
                 html {
@@ -49,7 +56,8 @@ BEMPRIV.decl('page', {
       content: [{
           block: 'header',
         },
-        BEMPRIV.json('body', data)
+        BEMPRIV.json('body', data),
+        BEMPRIV.json('footer', data)
       ]
     }
   }

@@ -5,7 +5,7 @@
       mods: {
           theme: 'islands',
           size: 'm',
-          view: 'action'
+          view: 'attention'
       }
     },
     'link'

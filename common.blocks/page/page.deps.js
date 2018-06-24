@@ -5,6 +5,6 @@
         },
         'header',
         'body',
-        // 'footer'
+        'footer'
     ]
 })

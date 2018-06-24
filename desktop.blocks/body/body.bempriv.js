@@ -1,4 +1,6 @@
-BEMPRIV.decl('body', {
+var BEMPRIV = require('bem-priv/build/lib/bempriv.js');
+
+module.exports = BEMPRIV.decl('body', {
   init: function() {
     const {data} = this;
 
@@ -14,7 +16,7 @@ BEMPRIV.decl('body', {
           size: 'm',
           view: 'action'
         },
-        text: this._getText()
+        text: 'Yandex ' + this._getText()
       }
     ]);
   }
