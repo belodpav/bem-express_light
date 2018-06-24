@@ -9,15 +9,11 @@
     "js": "node"
   },
   "watch": [
-    "server"
+    "common.blocks/",
+    "desktop.blocks/"
   ],
-  "events": {
-    "start": "echo 'Server started' | notify -t bem-express",
-    "restart": "echo 'Server started' | notify -t bem-express",
-    "crash": "echo 'Server failed to start :(' | notify -t bem-express"
-  },
   "env": {
     "NODE_ENV": "development"
   },
-  "ext": "js"
+  "ext": "bempriv.js"
 }

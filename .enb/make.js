@@ -51,6 +51,7 @@ module.exports = function(config) {
                 plugins: techs.postcssPlugins
             }],
 
+            // [require('enb-bempriv-js'), { privFile: './node_modules/bem-priv/build/lib/bempriv.js'}],
             // bemtree
             // [techs.bemtree, { sourceSuffixes: ['bemtree', 'bemtree.js'] }],
 
@@ -97,9 +98,7 @@ module.exports = function(config) {
             [techs.fileCopy, { source: '?.min.js', target: '../../static/?.min.js' }],
             [techs.fileCopy, { source: '?.min.css', target: '../../static/?.min.css' }]
         ]);
-        nodeConfig.addTech([require('enb-bempriv-js'), { privFile: './node_modules/bem-priv/build/lib/bempriv.js'}]);
-        // nodeConfig.addTech(require('enb-priv-js/techs/priv-server-include'));
-        // nodeConfig.addTech(require('enb-priv-js/techs/priv-js'));
-        nodeConfig.addTargets(['?.bempriv.js', '?.bemhtml.js', '../../static/?.min.js', '../../static/?.min.css']);
+        
+        nodeConfig.addTargets([/*'?.bempriv.js',*/ '?.bemhtml.js', '../../static/?.min.js', '../../static/?.min.css']);
     });
 };
