@@ -1,3 +1,3 @@
 block('body')({
-  tag: 'section'
+  tag: 'div'
 });

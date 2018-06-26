@@ -9,8 +9,7 @@
     "js": "node"
   },
   "watch": [
-    "common.blocks/",
-    "desktop.blocks/"
+    "server.bundles/index/index.bempriv.js"
   ],
   "env": {
     "NODE_ENV": "development"

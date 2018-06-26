@@ -1,5 +1,3 @@
-// var BEMPRIV = require('bem-priv/build/lib/bempriv.js');
-
 BEMPRIV.decl('body', {
   init: function() {
     const {data} = this;
@@ -16,11 +14,8 @@ BEMPRIV.decl('body', {
           size: 'm',
           view: 'attention'
         },
-        text: 'Go'
+        text: 'Touch ' + this._getText()
       }
     ]);
-  },
-  _getText: function() {
-    return 'Video';
   }
 });

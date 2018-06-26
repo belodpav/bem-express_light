@@ -5,7 +5,8 @@ module.exports =  BEMPRIV.decl('server__rebuild', {
     const fs = require('fs');
     const path = require('path');
     const _ = require('lodash');
-    const make = require('enb').make;
+    const enb = require('enb');
+    const make = enb.make;
     const watch = require('chokidar').watch;
 
     const rootDir = global.rootPath;
@@ -23,12 +24,14 @@ module.exports =  BEMPRIV.decl('server__rebuild', {
 
     // enb make
     function rebuild(event, file) {
-        console.time('Rebuild: ' + file);
+        console.log(file);
+        //console.time('Rebuild: ' + file);
         return make()
             .then(function() {
                 console.timeEnd('Rebuild: ' + file);
             })
             .fail(function(err) {
+                console.log('hey'); 
                 console.error(err);
             });
     }
@@ -36,11 +39,10 @@ module.exports =  BEMPRIV.decl('server__rebuild', {
     const debouncedRebuild = _.debounce(rebuild, 30, { leading: true, trailing: true });
 
     // Запускаем сборку 
-    process.env.NO_AUTOMAKE || watch([
-        path.join(rootDir, '*.blocks', '**'),
-    ].concat(bundles.map(function(bundle) {
-        return path.join(bundlesDir, bundle, bundle + '.bemdecl.js');
-    })), watchOpts).on('all', debouncedRebuild);
+    // process.env.NO_AUTOMAKE || watch([
+    //     path.join(rootDir, '*.blocks', '**'),
+    // ], watchOpts).on('all', debouncedRebuild);
+
 
     // livereload
     process.env.NO_LIVERELOAD || watch([

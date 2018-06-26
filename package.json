@@ -23,6 +23,7 @@
     "enb-priv-js": "^2.3.1",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
+    "express-useragent": "^1.0.12",
     "lodash": "^4.17.10",
     "node-eval": "^2.0.0",
     "priv-js": "^1.1.0",
@@ -70,7 +71,7 @@
     "postinstall": "npm run drop-cache && npm run make",
     "make": "enb make",
     "drop-cache": "rm -rf .enb/tmp",
-    "dev": "npm run make && nodemon app.js",
+    "dev": "npm run make && nodemon app.js & npm run watch",
     "watch": "chokidar '*.blocks/**' --initial -c 'enb make'",
     "test": "npm run lint && npm run make",
     "lint": "eslint . && bemhint . && stylelint *.blocks/**/*.css"

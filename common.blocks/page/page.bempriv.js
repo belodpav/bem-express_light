@@ -1,11 +1,12 @@
-var BEMPRIV = require('bem-priv/build/lib/bempriv.js');
+// var BEMPRIV = require('bem-priv/build/lib/bempriv.js');
+// require('../body/body.bempriv');
+// require('../../desktop.blocks/body/body.bempriv');
+// require('../../common.blocks/footer/footer.bempriv');
 
-module.exports = BEMPRIV.decl('page', {
+BEMPRIV.decl('page', {
   init: function() {
     const {data} = this.data;
-    require('../body/body.bempriv');
-    require('../../desktop.blocks/body/body.bempriv');
-    require('../../common.blocks/footer/footer.bempriv');
+    const {bundlesName} = this.data;
 
 
     return {
@@ -16,37 +17,13 @@ module.exports = BEMPRIV.decl('page', {
     styles: [
         {
             elem: 'css',
-            url: 'index.min.css'
-        },
-        {
-            elem: 'css',
-            content: `
-            html {
-                font-size: 10px;
-                font-family: Arial, Helvetica, sans-serif;
-            }
-            @media (min-width: 1200px) {
-                html {
-                    font-size: 13px;
-                }
-                }
-                @media (min-width: 1400px) {
-                html {
-                    font-size: 16px;
-                }
-                }
-                @media (min-width: 1800px) {
-                html {
-                    font-size: 22px;
-                }
-            }
-            `
+            url: bundlesName + '-index.min.css'
         }
     ],
     scripts: [
         {
             elem: 'js',
-            url: 'index.min.js'
+            url: bundlesName + '-index.min.js'
         }
     ],
     head: [
