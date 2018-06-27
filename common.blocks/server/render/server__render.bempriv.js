@@ -1,40 +1,49 @@
-var BEMPRIV = require('bem-priv/build/lib/bempriv.js');
-
-module.exports = BEMPRIV.decl('server__render', {
+BEMPRIV.decl('server__render', {
     init: function () {
         this._helpers = {
             fs: require('fs'),
             path: require('path'),
             nodeEval: require('node-eval'),
         };
-        const {path} = this._helpers;
 
         this._bundleName = 'index';
-        this._pathToBundle = path.resolve(global.rootPath , 'desktop.bundles', this._bundleName);
         this._isDev = process.env.NODE_ENV === 'development';
         
     },
     render: function(req, res, data, context) {
-        require('../../page/page.bempriv');
         const query = req.query;
         const isDev = this._isDev;
         let templates;
 
         if (isDev && query.json) return res.send('<pre>' + JSON.stringify(data, null, 4) + '</pre>');
     
+        
+
+        function getBundlesName(useragent) {
+            if (useragent.isDesktop) {
+                return 'desktop';
+            }
+            if (useragent.isMobile) {
+                return 'touch';
+            }
+        }
+
+        const bundlesName = getBundlesName(req.useragent);
+
         const dataCtx = {
             block: 'root',
             context: context,
+            bundlesName, 
             // extend with data needed for all routes
             data: Object.assign({}, data)
         };
 
-        templates = this._getTemplates();
+        templates = this._getTemplates(bundlesName, this._bundleName); // bundleName настроить!!!
         
         let bemjson;
         
         try {
-            bemjson = BEMPRIV.json('page', dataCtx);
+            bemjson = templates.BEMPRIV.json('page', dataCtx);
         } catch(err) {
             console.error('PRIV error', err.stack);
             console.trace('server stack');
@@ -62,11 +71,13 @@ module.exports = BEMPRIV.decl('server__render', {
 
         return nodeEval(fs.readFileSync(filename, 'utf8'), filename);
     },
-    _getTemplates: function() {
+    _getTemplates: function(bundlesName, bundleName) {
         const {path} = this._helpers;
+        const pathToBundle = path.resolve(global.rootPath , `${bundlesName}.bundles`, bundleName);
+         
         return {
-            // priv: this._evalFile(path.join(this._pathToBundle, this._bundleName + '.bempriv.js')),
-            BEMHTML: this._evalFile(path.join(this._pathToBundle, this._bundleName + '.bemhtml.js')).BEMHTML
+            BEMPRIV: this._evalFile(path.join(pathToBundle, bundleName + '.bempriv.js')),
+            BEMHTML: this._evalFile(path.join(pathToBundle, bundleName + '.bemhtml.js')).BEMHTML
         };
     }
 

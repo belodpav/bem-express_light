@@ -1,6 +1,4 @@
-var BEMPRIV = require('bem-priv/build/lib/bempriv.js');
-
-module.exports = BEMPRIV.decl('body', {
+BEMPRIV.decl('body', {
   init: function() {
     const {data} = this;
 
@@ -14,9 +12,9 @@ module.exports = BEMPRIV.decl('body', {
         mods: {
           theme: 'islands',
           size: 'm',
-          view: 'action'
+          view: 'attention'
         },
-        text: 'Yandex ' + this._getText()
+        text: 'Touch ' + this._getText()
       }
     ]);
   }

@@ -1,10 +1,10 @@
-var BEMPRIV = require('./common.blocks/server/server.bempriv');
-
-var Emitter = require("events");
-global.emitter = new Emitter();
+const BEMPRIV = require('./server.bundles/index/index.bempriv');
+const Emitter = require('events');
 
 global.rootPath = __dirname;
+global.emitter = new Emitter();
 
 BEMPRIV.create('server');
 
 global.emitter.emit('restart');
+

@@ -5,9 +5,15 @@
       mods: {
           theme: 'islands',
           size: 'm',
-          view: 'attention'
+          view: 'action'
       }
     },
-    'link'
+    {
+      block: 'link',
+      mods: {
+          theme: 'islands',
+          size: 'm'
+      }
+    }
   ]
 })

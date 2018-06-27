@@ -1,11 +1,8 @@
-var BEMPRIV = require('bem-priv/build/lib/bempriv.js');
-require('./render/server__render.bempriv');
-require('./rebuild/server__rebuild.bempriv');
-
-module.exports = BEMPRIV.decl('server', {
+BEMPRIV.decl('server', {
     init: function() {
         const path = require('path');
         const express = require('express');
+        const useragent = require('express-useragent');
         const app = express();
         const bodyParser = require('body-parser');
         const favicon = require('serve-favicon');
@@ -25,6 +22,7 @@ module.exports = BEMPRIV.decl('server', {
             .use(favicon(path.join(staticFolder, 'favicon.ico')))
             .use(serveStatic(staticFolder))
             .use(bodyParser.urlencoded({ extended: true }))
+            .use(useragent.express());
 
         app.get('/ping/', function(req, res) {
             res.send('ok');

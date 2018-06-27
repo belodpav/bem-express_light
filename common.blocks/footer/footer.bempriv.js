@@ -1,12 +1,12 @@
-var BEMPRIV = require('bem-priv/build/lib/bempriv.js');
+// var BEMPRIV = require('bem-priv/build/lib/bempriv.js');
 
-module.exports = BEMPRIV.decl('footer', {
+BEMPRIV.decl('footer', {
   init: function() {
 
     this.content([
       {
         block: 'section',
-        content: '=== FРУДДЩ ==='
+        content: '=== Hey, Yandex ==='
       }
     ]);
   }

@@ -8,11 +8,11 @@ env:
   node: true
   es6: true
   bem-xjst/bemhtml: true
-  bem-xjst/bemtree: true
 
 globals:
   # YModules
   modules: false
+  BEMPRIV: true
 
 rules:
   curly: [error, multi-line]
