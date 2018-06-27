@@ -12,7 +12,7 @@ BEMPRIV.decl('page', {
     return {
       block: 'page',
       title:  data.title,
-      mods: {said: 'index'},
+      mods: {view: data.view},
       favicon: '/favicon.ico',
     styles: [
         {

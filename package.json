@@ -71,7 +71,7 @@
     "postinstall": "npm run drop-cache && npm run make",
     "make": "enb make",
     "drop-cache": "rm -rf .enb/tmp",
-    "dev": "npm run make && nodemon app.js & npm run watch",
+    "dev": "npm run make && nodemon app.js",
     "watch": "chokidar '*.blocks/**' --initial -c 'enb make'",
     "test": "npm run lint && npm run make",
     "lint": "eslint . && bemhint . && stylelint *.blocks/**/*.css"

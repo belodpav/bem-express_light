@@ -6,7 +6,7 @@ BEMPRIV.decl('footer', {
     this.content([
       {
         block: 'section',
-        content: '=== Yandex ==='
+        content: '=== Hey, Yandex ==='
       }
     ]);
   }

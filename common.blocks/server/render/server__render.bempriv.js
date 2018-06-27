@@ -1,5 +1,3 @@
-// var BEMPRIV = require('bem-priv/build/lib/bempriv.js');
-
 BEMPRIV.decl('server__render', {
     init: function () {
         this._helpers = {
@@ -7,14 +5,12 @@ BEMPRIV.decl('server__render', {
             path: require('path'),
             nodeEval: require('node-eval'),
         };
-        const {path} = this._helpers;
 
         this._bundleName = 'index';
         this._isDev = process.env.NODE_ENV === 'development';
         
     },
     render: function(req, res, data, context) {
-        // require('../../page/page.bempriv');
         const query = req.query;
         const isDev = this._isDev;
         let templates;
@@ -47,7 +43,7 @@ BEMPRIV.decl('server__render', {
         let bemjson;
         
         try {
-            bemjson = templates.priv.json('page', dataCtx);
+            bemjson = templates.BEMPRIV.json('page', dataCtx);
         } catch(err) {
             console.error('PRIV error', err.stack);
             console.trace('server stack');
@@ -80,7 +76,7 @@ BEMPRIV.decl('server__render', {
         const pathToBundle = path.resolve(global.rootPath , `${bundlesName}.bundles`, bundleName);
          
         return {
-            priv: this._evalFile(path.join(pathToBundle, bundleName + '.bempriv.js')),
+            BEMPRIV: this._evalFile(path.join(pathToBundle, bundleName + '.bempriv.js')),
             BEMHTML: this._evalFile(path.join(pathToBundle, bundleName + '.bemhtml.js')).BEMHTML
         };
     }

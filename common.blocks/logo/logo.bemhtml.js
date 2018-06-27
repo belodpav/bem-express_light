@@ -1,3 +1,3 @@
 block('header')({
-  content: 'LOGO Yandex'
+  content: 'Hello Yandex'
 });

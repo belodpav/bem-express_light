@@ -1,5 +1,8 @@
 .button_theme_islands.button_view_attention {
     background: #000;
-    font-size: 40px;
+    font-size: 12px;
 }
 
+.button_theme_islands.button_view_attention::before {
+    background-color: #000;
+}

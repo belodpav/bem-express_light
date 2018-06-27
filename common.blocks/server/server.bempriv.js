@@ -1,7 +1,3 @@
-// var BEMPRIV = require('bem-priv/build/lib/bempriv.js');
-// require('./render/server__render.bempriv');
-// require('./rebuild/server__rebuild.bempriv');
-
 BEMPRIV.decl('server', {
     init: function() {
         const path = require('path');
