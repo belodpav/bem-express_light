@@ -67,7 +67,7 @@
     "ym": "^0.1.2"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "YENV=production enb make && NODE_ENV=production node app.js",
     "postinstall": "npm run drop-cache && npm run make",
     "make": "enb make",
     "drop-cache": "rm -rf .enb/tmp",
